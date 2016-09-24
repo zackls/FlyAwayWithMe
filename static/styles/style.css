@@ -35,6 +35,13 @@ button {
     text-decoration: none;
 }
 
+input {
+	border: none;
+	border-bottom: 1px solid #444;
+	width: 100%;
+	text-align: center;
+}
+
 .right {
 	text-align: center;
 	background: #FFF;
@@ -63,4 +70,12 @@ button {
 .vertical-align {
     display: flex;
     align-items: center;
+}
+
+.left-align {
+	text-align: left;
+}
+
+.right-align {
+	text-align: right;
 }
