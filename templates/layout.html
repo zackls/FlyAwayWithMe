@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
+<link rel="stylesheet"
+	  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	  crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
+	<script src="{{url_for('static', filename='main.js')}}"></script>
+		<title>Fly Away With Me</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 		<script type="text/javascript" src="{{ url_for('static', filename='jquery-3.1.1.min.js')}}"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -24,14 +34,50 @@
 					<div class="right-box original-query">
 						<div class="field">
 							<h3>Where are you coming from?</h3>
-							<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
-						</div>
+		<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+		<div id="map"></div>
+	<script>
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+        });
+        var input = /** @type {!HTMLInputElement} */(
+            document.getElementById('pac-input'));
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          var place = autocomplete.getPlace();
+
+          // If the place has a geometry, then present it on a map.
+
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.open(map, marker);
+        });
+
+        // Sets a listener on a radio button to change the filter type on Places
+        // Autocomplete.
+        function setupClickListener(id, types) {
+          var radioButton = document.getElementById(id);
+          radioButton.addEventListener('click', function() {
+            autocomplete.setTypes(types);
+          });
+        }
+      }
+    </script>
+							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4bY7ArWix6j9i-oD1kNZtrgx-nvbBja4&types=airport&libraries=places&callback=initMap"
+									async defer></script>
 						<div class="field">
 							<h3>Round trip?</h3>
 							<select id="roundTripInfo">
 								<option>Yes</option>
 								<option>No</option>
 							</select>
+
 						</div>
 						<div class="field">
 							<button class="nextButton" onClick="isRoundTrip = document.getElementById('roundTripInfo').selectedIndex == 0; scrollToNextEntry();"><h4>GO</h4></button>
