@@ -10,7 +10,7 @@ h1, h2 {
     font-family: "Vollkorn";
 }
 
-h3, h4 {
+h3, h4, p {
 	font-family: Lato;
 }
 
@@ -24,6 +24,15 @@ h3 {
 
 h4 {
 	font-size: 18px;
+}
+
+button {
+	margin-top: 56px;
+	background-color: #00695c;
+    border: none;
+    color: #FFF;
+    padding: 4px 36px;
+    text-decoration: none;
 }
 
 .right {
@@ -45,6 +54,10 @@ h4 {
 
 .left h1 {
 	margin-left: auto;
+}
+
+.field {
+	padding-top: 30px;
 }
 
 .vertical-align {
