@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
 <head>
 <link rel="stylesheet"
 	  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -12,60 +11,6 @@
 	<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
 	<script src="{{url_for('static', filename='main.js')}}"></script>
 		<title>Fly Away With Me</title>
-	<style>
-		html, body {
-		height: 100%;
-		margin: 0;
-		padding: 0;
-		}
-		#map {
-		height: 100%;
-		}
-		.controls {
-		margin-top: 10px;
-		border: 1px solid transparent;
-		border-radius: 2px 0 0 2px;
-		box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		height: 32px;
-		outline: none;
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-		}
-
-		#pac-input {
-		background-color: #fff;
-		font-family: Roboto;
-		font-size: 15px;
-		font-weight: 300;
-		margin-left: 12px;
-		padding: 0 11px 0 13px;
-		text-overflow: ellipsis;
-		width: 300px;
-		}
-
-		#pac-input:focus {
-		border-color: #4d90fe;
-		}
-
-		.pac-container {
-		font-family: Roboto;
-		}
-
-		#type-selector {
-		color: #fff;
-		background-color: #4d90fe;
-		padding: 5px 11px 0px 11px;
-		}
-
-		#type-selector label {
-		font-family: Roboto;
-		font-size: 13px;
-		font-weight: 300;
-		}
-	</style>
-</head>
-=======
-	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 		<script type="text/javascript" src="{{ url_for('static', filename='jquery-3.1.1.min.js')}}"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -79,7 +24,6 @@
 
 		<title>Fly Away With Me</title>
 	</head>
->>>>>>> b46209c959516c84a7dacde0b45ff3f12e389b0b
 	<body>
 		<div class="container-fluid">
 		    <div class="row">
@@ -125,7 +69,7 @@
         }
       }
     </script>
-							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4bY7ArWix6j9i-oD1kNZtrgx-nvbBja4&libraries=places&callback=initMap"
+							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4bY7ArWix6j9i-oD1kNZtrgx-nvbBja4&types=airport&libraries=places&callback=initMap"
 									async defer></script>
 						<div class="field">
 							<h3>Round trip?</h3>
@@ -135,9 +79,6 @@
 							</select>
 
 						</div>
-<<<<<<< HEAD
-							<button><h4>GO</h4></button>
-=======
                         From: {{flightInfo.home}}
                         To: {{flightInfo.visit}}
                         Dates:
@@ -146,7 +87,6 @@
                         Price: {{flightInfo.minPrice}}
 						<div class="field">
 							<button class="nextButton" onClick="scrollToNextEntry()"><h4>GO</h4></button>
->>>>>>> b46209c959516c84a7dacde0b45ff3f12e389b0b
 						</div>
 				    </div>
 				</div>

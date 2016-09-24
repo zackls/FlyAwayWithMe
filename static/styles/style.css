@@ -81,12 +81,6 @@ input {
     display: flex;
     align-items: center;
 }
-<<<<<<< HEAD
-.pac-container {
-                z-index: 10000 !important;
-                display: block !important;
-            }
-=======
 
 .left-align {
 	text-align: left;
@@ -95,4 +89,13 @@ input {
 .right-align {
 	text-align: right;
 }
->>>>>>> b46209c959516c84a7dacde0b45ff3f12e389b0b
+		.controls {
+		margin-top: 10px;
+		border: 1px solid transparent;
+		border-radius: 2px 0 0 2px;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		height: 32px;
+		outline: none;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+		}
