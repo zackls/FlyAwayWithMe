@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet"
-	  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	  crossorigin="anonymous"/>
-<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
-	<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
-	<script src="{{url_for('static', filename='main.js')}}"></script>
-		<title>Fly Away With Me</title>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+		<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
+		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
+		<script src="{{url_for('static', filename='main.js')}}"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 		<script type="text/javascript" src="{{ url_for('static', filename='jquery-3.1.1.min.js')}}"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
-		<meta charset="utf-8"/>
 		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
 		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3CX-dPmHJfqa3UJGTeONprR_onwEnN0M&callback=initMap" type="text/javascript"></script>
@@ -28,47 +24,68 @@
 		<div class="container-fluid">
 		    <div class="row">
 		        <div class="col-sm-6 left vertical-align">
+				    <div>
+					    <!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In  -->
+						<svg version="1.1"
+							 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+							 x="0px" y="0px" width="330.1px" height="104.5px" viewBox="0 0 330.1 104.5" enable-background="new 0 0 330.1 104.5"
+							 xml:space="preserve">
+						<defs>
+						</defs>
+						<g>
+							<g>
+								<path fill="#FFFFFF" d="M196.7,56.7c0,0,120.6-36.5,127-39.3c11-4.8,4.7-7.6,3.1-8.9c-1.7-1.3-10.9-11.7-24.3-7.5
+									c-13.4,4.3-113,34.1-113,34.1c-6.4,1.6-7.7-0.2-12.4-4.4S157,6.5,155.3,12.6c-1.6,6.1,0.8,9.2,1.3,10.7s7.1,27.1,8.6,31
+									c1.5,4,13.2,5.4,17.7,4.9C187.3,58.6,196.7,56.7,196.7,56.7z"/>
+								<path fill="#FFFFFF" d="M273.5,31.8c0,0-15.6,32.6-17.9,36.5c-2.3,3.9-9.4,6.7-11.3,6.1c-1.9-0.6,0.5-6.4,0.5-6.4l8.6-35.1"/>
+								<path fill="#FFFFFF" d="M271.8,23.3c0,0-30.4-19.8-34.3-22s-11.5-0.9-12.8,0.6c-1.3,1.5,3.8,5.3,3.8,5.3L254,32.7"/>
+							</g>
+							<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M201.3,20c0,0-87.8,28.8-129.2,37.5"/>
+							<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M129.3,66.5c0,0-87.8,28.8-129.2,37.5"/>
+							<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M205,66.5c0,0-87.8,28.8-129.2,37.5"/>
+						</g>
+						</svg>
+					</div>
 				    <h1>Fly anywhere.</h1>
 			    </div>
 				<div class="col-sm-6 right vertical-align info-container">
 					<div class="right-box original-query">
 						<div class="field">
 							<h3>Where are you coming from?</h3>
-		<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-		<div id="map"></div>
-	<script>
+							<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+							<div id="map"></div>
+								<script>
+							      function initMap() {
+							        var map = new google.maps.Map(document.getElementById('map'), {
+							        });
+							        var input = /** @type {!HTMLInputElement} */(
+							            document.getElementById('pac-input'));
+							        var autocomplete = new google.maps.places.Autocomplete(input);
+							        autocomplete.bindTo('bounds', map);
 
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-        });
-        var input = /** @type {!HTMLInputElement} */(
-            document.getElementById('pac-input'));
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
+							        var infowindow = new google.maps.InfoWindow();
 
-        var infowindow = new google.maps.InfoWindow();
+							        autocomplete.addListener('place_changed', function() {
+							          infowindow.close();
+							          marker.setVisible(false);
+							          var place = autocomplete.getPlace();
 
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          marker.setVisible(false);
-          var place = autocomplete.getPlace();
+							          // If the place has a geometry, then present it on a map.
 
-          // If the place has a geometry, then present it on a map.
+							          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+							          infowindow.open(map, marker);
+							        });
 
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-          infowindow.open(map, marker);
-        });
-
-        // Sets a listener on a radio button to change the filter type on Places
-        // Autocomplete.
-        function setupClickListener(id, types) {
-          var radioButton = document.getElementById(id);
-          radioButton.addEventListener('click', function() {
-            autocomplete.setTypes(types);
-          });
-        }
-      }
-    </script>
+							        // Sets a listener on a radio button to change the filter type on Places
+							        // Autocomplete.
+							        function setupClickListener(id, types) {
+							          var radioButton = document.getElementById(id);
+							          radioButton.addEventListener('click', function() {
+							            autocomplete.setTypes(types);
+							          });
+							        }
+							      }
+							    </script>
 							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4bY7ArWix6j9i-oD1kNZtrgx-nvbBja4&types=airport&libraries=places&callback=initMap"
 									async defer></script>
 						<div class="field">

@@ -11,8 +11,8 @@ function scrollToNextEntry() {
 
 	$('.right-box').animate({
 		opacity: 0,
-		marginLeft: '-300px'
-	}, 'slow', 'swing', function() {
+		marginLeft: '-200px'
+	}, 'medium', 'swing', function() {
 		$(this).remove();
 		$('<div class="right-box">' +
 			'<div class="field">' +
