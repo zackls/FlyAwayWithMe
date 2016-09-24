@@ -14,7 +14,7 @@ function scrollToNextEntry() {
 		marginLeft: '-300px'
 	}, 'slow', 'swing', function() {
 		$(this).remove();
-		$('<div class="right-box" style="display:none;">' +
+		$('<div class="right-box">' +
 			'<div class="field">' +
 				'<h1>$' + nextEntry["cost"] + '</h1><br>' +
 					'<h3>' +
