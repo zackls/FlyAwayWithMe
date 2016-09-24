@@ -11,39 +11,42 @@ header = {'Authorization': 'expedia-apikey key=OzVFoq2hbfr0ZDroP9yuPeZsEHapjptr'
 end = datetime.date(2016,11,1)
 date_list = [end - datetime.timedelta(days=x) for x in range(0, 30)]
 
-payload = {
-    'MessageHeader': 
-    {'ClientInfo':
-        {'DirectClientName': 'Hackathon'},
-        'TransactionGUID': ''},
-        'tpid': 1,
-        'eapid': 0,
-        'PointOfSaleKey':
-        {'JurisdictionCountryCode': 'USA',
-            'CompanyCode': '10111',
-            'ManagementUnitCode': '1010'},
-        'OriginAirportCodeList': 
-        {'AirportCode': ['ATL']},
-        'DestinationAirportCodeList': 
-        {'AirportCode': ['LAX']},
-        'FareCalendar': {
-            "StartDate" : "2016-10-1",
-            "DayCount" : 30 }
-}
-r = requests.post(url, data=json.dumps(payload), headers=header)
-data = json.loads(r.text)
-
-offers = data['FareCalendar']['AirOfferSummary']
-
 minPrice = 100000
 flightInfo = {}
 
-for offer in offers:
-    price = float(offer['FlightPriceSummary']['TotalPrice']) 
-    if price < minPrice:
-        flightInfo = offer['FlightItinerarySummary']
-        minPrice = price
+for date in date_list:
+    payload = {
+        'MessageHeader': 
+        {'ClientInfo':
+            {'DirectClientName': 'Hackathon'},
+            'TransactionGUID': ''},
+            'tpid': 1,
+            'eapid': 0,
+            'PointOfSaleKey':
+            {'JurisdictionCountryCode': 'USA',
+                'CompanyCode': '10111',
+                'ManagementUnitCode': '1010'},
+            'OriginAirportCodeList': 
+            {'AirportCode': ['ATL']},
+            'DestinationAirportCodeList': 
+            {'AirportCode': ['SFO']},
+            'FareCalendar': {
+                "StartDate" : date.isoformat(),
+                "DayCount" : 30 }
+    }
+    r = requests.post(url, data=json.dumps(payload), headers=header)
+    data = json.loads(r.text)
 
+    offers = data['FareCalendar']['AirOfferSummary']
+
+    for offer in offers:
+        price = float(offer['FlightPriceSummary']['TotalPrice']) 
+        if price < minPrice:
+            flightInfo = offer['FlightItinerarySummary']
+            stuff = offer
+            minPrice = price
+
+print stuff
 home = flightInfo['OutboundDepartureAirportCode']
 visit = flightInfo['InboundDepartureAirportCode']
 outDate = flightInfo['OutboundDepartureTime']
