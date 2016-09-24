@@ -11,20 +11,18 @@ function scrollToNextEntry() {
 
 	$('.right-box').animate({
 		opacity: 0,
-		marginLeft: '-500px'
+		marginLeft: '-300px'
 	}, 'slow', 'swing', function() {
 		$(this).remove();
 		$('<div class="right-box">' +
 			'<div class="field">' +
 				'<h1>$' + nextEntry["cost"] + '</h1><br>' +
-				'<table>' +
 					'<h3>' +
-						'<tr><td class="right-align">To</div><div class="col-sm-6 left-align">' + nextEntry["destination"] + '</div><br>' +
-						'<tr><td class="right-align">Departing</div><div class="col-sm-6 left-align">' + nextEntry["departureTime"] + '</div><br>' +
-						'<tr><td class="right-align">Airline</div><div class="col-sm-6 left-align">' + nextEntry["airline"] + '</div><br>' +
-						'<tr><td class="right-align">Type</div><div class="col-sm-6 left-align">Single flight</div><br>' +
+						'<div class="col-sm-6 right-align">To</div><div class="col-sm-6 left-align">' + nextEntry["destination"] + '</div><br>' +
+						'<div class="col-sm-6 right-align">Departing</div><div class="col-sm-6 left-align">' + nextEntry["departureTime"] + '</div><br>' +
+						'<div class="col-sm-6 right-align">Airline</div><div class="col-sm-6 left-align">' + nextEntry["airline"] + '</div><br>' +
+						'<div class="col-sm-6 right-align">Type</div><div class="col-sm-6 left-align">Single flight</div><br>' +
 					'</h3>' +
-				'</table>' +
 			'</div>' +
 			'<div class="field">' +
 				'<button class="bookButton"><h4>BOOK</h4></button>' +
