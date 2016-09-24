@@ -1,13 +1,18 @@
 var isRoundTrip = true;
 
 function scrollToNextEntry() {
+	getFlight();
+
 	var infoContainer = document.getElementById("flightInfoContainer");
+	var originalDeparture = infoContainer.getAttribute("data-departureTime");
+	var originalReturn = infoContainer.getAttribute("data-returnTime");
 	var nextEntry = {
 		"cost" : Number(infoContainer.getAttribute("data-cost")).toFixed(2),
+		"origin" : infoContainer.getAttribute("data-origin"),
 		"destination" : infoContainer.getAttribute("data-destination"),
-		"departureTime" : formatDate(infoContainer.getAttribute("data-departureTime")),
-		"returnTime" : formatDate(infoContainer.getAttribute("data-returnTime")),
-	}
+		"departureTime" : formatDate(originalDeparture),
+		"returnTime" : formatDate(originalReturn)
+	};
 
 	$('.right-box').animate({
 		opacity: 0,
@@ -26,6 +31,7 @@ function scrollToNextEntry() {
 					'</h3>' +
 			'</div>' +
 			'<div class="field">' +
+				// '<button class="bookButton" action=https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:' + nextEntry["origin"] + ',to:' + nextEntry["destination"] + ',departure:' + originalDeparture + 'TANYT&leg2=from:' + nextEntry["destination"] + ',to:' + nextEntry["origin"] + ',departure:' + originalReturn + 'TANYT&passengers=children:0,adults:' + '1,seniors:0,infantinlap:Y&mode=search' + '><h4>BOOK</h4></button>' +
 				'<button class="bookButton"><h4>BOOK</h4></button>' +
 				'<button class="nextButton" onClick="scrollToNextEntry()"><h4>NEXT</h4></button>' +
 			'</div>' +
@@ -33,9 +39,27 @@ function scrollToNextEntry() {
 	});
 }
 
+function getFlight() {
+	$.ajax({
+		type: "POST",
+		url: "{{ url_for('', filename='flaskr.py')}}",
+		data: { param: "ATL"},
+		success: function(d) {
+			console.log(d);
+		},
+		error: function(e) {
+			console.log(e);
+		}
+	});
+}
+
 function formatDate(date) {
-	var d = new Date(date);
-	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-	var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-	return days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + ", " + d.getHours() + ":" + d.getMinutes() + (d.getHours() < 12 ? "AM" : "PM");
+	if (date) {
+		var d = new Date(date);
+		var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+		return days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + ", " + d.getHours() + ":" + d.getMinutes() + (d.getHours() < 12 ? "AM" : "PM");
+	} else {
+		return null;
+	}
 }

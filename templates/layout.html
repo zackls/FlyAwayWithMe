@@ -4,17 +4,12 @@
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 		<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
-		<meta charset="utf-8"/>
 		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
 		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
 		<script src="{{url_for('static', filename='main.js')}}"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
 		<script type="text/javascript" src="{{ url_for('static', filename='jquery-3.1.1.min.js')}}"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
-		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
-		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3CX-dPmHJfqa3UJGTeONprR_onwEnN0M&callback=initMap" type="text/javascript"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='paging.js')}}"></script>
 
@@ -105,4 +100,4 @@
 		</div>
 	</body>
 </html>
-<div id="flightInfoContainer" data-cost={{flightInfo.minPrice}} data-destination={{flightInfo.visit}} data-departureTime={{flightInfo.outDate}} data-returnTime={{flightInfo.inDate}}>
+<div id="flightInfoContainer" data-cost={{flightInfo.minPrice}} data-origin={{flightInfo.home}} data-destination={{flightInfo.visit}} data-departureTime={{flightInfo.outDate}} data-returnTime={{flightInfo.inDate}}>
