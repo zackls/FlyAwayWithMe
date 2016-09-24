@@ -27,7 +27,7 @@ def getFlightInfo(depAirPort):
                     'CompanyCode': '10111',
                     'ManagementUnitCode': '1010'},
                 'OriginAirportCodeList': 
-                {'AirportCode': [depAirport]},
+                {'AirportCode': [depAirPort]},
                 'DestinationAirportCodeList': 
                 {'AirportCode': ['SFO']},
                 'FareCalendar': {
