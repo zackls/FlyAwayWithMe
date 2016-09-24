@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
 <link rel="stylesheet"
 	  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -63,14 +64,30 @@
 		}
 	</style>
 </head>
+=======
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery-3.1.1.min.js')}}"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
+		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3CX-dPmHJfqa3UJGTeONprR_onwEnN0M&callback=initMap" type="text/javascript"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='paging.js')}}"></script>
+
+		<title>Fly Away With Me</title>
+	</head>
+>>>>>>> b46209c959516c84a7dacde0b45ff3f12e389b0b
 	<body>
 		<div class="container-fluid">
 		    <div class="row">
 		        <div class="col-sm-6 left vertical-align">
 				    <h1>Fly anywhere.</h1>
 			    </div>
-				<div class="col-sm-6 right vertical-align">
-					<div class="right-box">
+				<div class="col-sm-6 right vertical-align info-container">
+					<div class="right-box original-query">
 						<div class="field">
 							<h3>Where are you coming from?</h3>
 		<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
@@ -118,7 +135,18 @@
 							</select>
 
 						</div>
+<<<<<<< HEAD
 							<button><h4>GO</h4></button>
+=======
+                        From: {{flightInfo.home}}
+                        To: {{flightInfo.visit}}
+                        Dates:
+                        {{flightInfo.outDate}}
+                        {{flightInfo.inDate}}
+                        Price: {{flightInfo.minPrice}}
+						<div class="field">
+							<button class="nextButton" onClick="scrollToNextEntry()"><h4>GO</h4></button>
+>>>>>>> b46209c959516c84a7dacde0b45ff3f12e389b0b
 						</div>
 				    </div>
 				</div>

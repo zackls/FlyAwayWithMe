@@ -6,6 +6,14 @@ html, body, .container-fluid, .row {
 	height: 100%;
 }
 
+html, body, .container-fluid, .row, .right-box:not(.original-query) {
+	width: 100%;
+}
+
+.right-box:not(.original-query) {
+	margin: auto;
+}
+
 h1, h2 {
     font-family: "Vollkorn";
 }
@@ -28,11 +36,20 @@ h4 {
 
 button {
 	margin-top: 56px;
+	margin-left: 8px;
+	margin-right: 8px;
 	background-color: #00695c;
     border: none;
     color: #FFF;
     padding: 4px 36px;
     text-decoration: none;
+}
+
+input {
+	border: none;
+	border-bottom: 1px solid #444;
+	width: 100%;
+	text-align: center;
 }
 
 .right {
@@ -64,7 +81,18 @@ button {
     display: flex;
     align-items: center;
 }
+<<<<<<< HEAD
 .pac-container {
                 z-index: 10000 !important;
                 display: block !important;
             }
+=======
+
+.left-align {
+	text-align: left;
+}
+
+.right-align {
+	text-align: right;
+}
+>>>>>>> b46209c959516c84a7dacde0b45ff3f12e389b0b
