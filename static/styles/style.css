@@ -14,14 +14,6 @@ html, body, .container-fluid, .row, .right-box:not(.original-query) {
 	margin: auto;
 }
 
-h1, h2 {
-    font-family: "Vollkorn";
-}
-
-h3, h4, p {
-	font-family: Lato;
-}
-
 h1 {
     font-size: 54px;
 }
@@ -53,15 +45,16 @@ input {
 }
 
 .right {
+	font-family: Lato;
 	text-align: center;
 	background: #FFF;
 	color: #444;
 	height: 100%;
-
 	justify-content: center;
 }
 
 .left {
+    font-family: "Vollkorn";
     text-align: right;
 	background: #00695c;
 	color: #FFF;

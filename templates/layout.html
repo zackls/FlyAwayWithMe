@@ -25,23 +25,16 @@
 						<div class="field">
 							<h3>Where are you coming from?</h3>
 							<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
-
 						</div>
 						<div class="field">
 							<h3>Round trip?</h3>
-							<select>
+							<select id="roundTripInfo">
 								<option>Yes</option>
 								<option>No</option>
 							</select>
 						</div>
-                        From: {{flightInfo.home}}
-                        To: {{flightInfo.visit}}
-                        Dates:
-                        {{flightInfo.outDate}}
-                        {{flightInfo.inDate}}
-                        Price: {{flightInfo.minPrice}}
 						<div class="field">
-							<button class="nextButton" onClick="scrollToNextEntry()"><h4>GO</h4></button>
+							<button class="nextButton" onClick="isRoundTrip = document.getElementById('roundTripInfo').selectedIndex == 0; scrollToNextEntry();"><h4>GO</h4></button>
 						</div>
 				    </div>
 				</div>
@@ -49,3 +42,4 @@
 		</div>
 	</body>
 </html>
+<div id="flightInfoContainer" data-cost={{flightInfo.minPrice}} data-destination={{flightInfo.visit}} data-departureTime={{flightInfo.outDate}} data-returnTime={{flightInfo.inDate}}>
