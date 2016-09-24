@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    flightInfo = getFlightInfo
+    flightInfo = getFlightInfo('ATL')
     return render_template('layout.html',flightInfo=flightInfo)
 
 if __name__ == '__main__':
