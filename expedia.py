@@ -4,13 +4,38 @@ import json
 
 key = 'OzVFoq2hbfr0ZDroP9yuPeZsEHapjptr'
 
-url = 'http://terminal2.expedia.com:80/x/mflights/search'
+url = 'http://terminal2.expedia.com:80/x/flights/overview/get'
 
-headers = {'Authorization': 'expedia-apikey key=OzVFoq2hbfr0ZDroP9yuPeZsEHapjptr'}
+header = {'Authorization': 'expedia-apikey key=OzVFoq2hbfr0ZDroP9yuPeZsEHapjptr',
+        'Content-Type': 'application/json', 'Accept': 'application/json'}
 
 end = datetime.date(2016,11,1)
 date_list = [end - datetime.timedelta(days=x) for x in range(0, 30)]
 
+payload = {
+    'MessageHeader': 
+    {'ClientInfo':
+        {'DirectClientName': 'Hackathon'},
+        'TransactionGUID': ''},
+        'tpid': 1,
+        'eapid': 0,
+        'PointOfSaleKey':
+        {'JurisdictionCountryCode': 'USA',
+            'CompanyCode': '10111',
+            'ManagementUnitCode': '1010'},
+        'OriginAirportCodeList': 
+        {'AirportCode': ['ATL']},
+        'DestinationAirportCodeList': 
+        {'AirportCode': ['DFW']},
+        'FareCalendar': {}
+}
+r = requests.post(url, data=json.dumps(payload,ensure_ascii=False), headers=header)
+data = json.loads(r.text)
+
+print r
+print r.text
+print data
+"""
 minPrice = 100000
 legIds = ''
 
@@ -53,3 +78,4 @@ for offer in data['offers']:
 
 print retLegIds
 print retMinPrice
+"""
