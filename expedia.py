@@ -3,7 +3,6 @@ import requests
 import json
 
 key = 'OzVFoq2hbfr0ZDroP9yuPeZsEHapjptr'
-
 url = 'http://terminal2.expedia.com:80/x/flights/overview/get'
 
 header = {'Authorization': 'expedia-apikey key=OzVFoq2hbfr0ZDroP9yuPeZsEHapjptr',
@@ -26,56 +25,41 @@ payload = {
         'OriginAirportCodeList': 
         {'AirportCode': ['ATL']},
         'DestinationAirportCodeList': 
-        {'AirportCode': ['DFW']},
-        'FareCalendar': {}
+        {'AirportCode': ['LAX']},
+        'FareCalendar': {
+            "StartDate" : "2016-10-1",
+            "DayCount" : 30 }
 }
-r = requests.post(url, data=json.dumps(payload,ensure_ascii=False), headers=header)
+r = requests.post(url, data=json.dumps(payload), headers=header)
 data = json.loads(r.text)
 
-print r
-print r.text
-print data
-"""
+offers = data['FareCalendar']['AirOfferSummary']
+
 minPrice = 100000
-legIds = ''
+flightInfo = {}
 
-for date in date_list:
+for offer in offers:
+    price = float(offer['FlightPriceSummary']['TotalPrice']) 
+    if price < minPrice:
+        flightInfo = offer['FlightItinerarySummary']
+        minPrice = price
 
-    payload = {'departureDate':date.isoformat(), 
-            'departureAirport':'ATL', 'arrivalAirport':'DFW', 
-            'numberOfAdultTravelers':'1', 'maxOfferCount':'2000'}
+home = flightInfo['OutboundDepartureAirportCode']
+visit = flightInfo['InboundDepartureAirportCode']
+outDate = flightInfo['OutboundDepartureTime']
+inDate = flightInfo['InboundDepartureTime']
 
-    r = requests.get(url, params=payload, headers=headers)
-    data = json.loads(r.text)
+outDate = outDate.split('T')[0]
+outDate = outDate.split("-")[1] + "/" + outDate.split("-")[2] + "/" +  outDate.split("-")[0]
 
-    #prices = [float(price['totalPrice']['amount']) for price in data['offers']]
-    #print prices
+inDate = inDate.split('T')[0]
+inDate = inDate.split("-")[1] + "/" + inDate.split("-")[2] + "/" +  inDate.split("-")[0]
 
-    for offer in data['offers']:
-        price = float(offer['totalPrice']['amount']) 
-        if price < minPrice:
-            minPrice = price
-            legIds = offer['legIds']
+link = 'https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:'
+link += home + ',to:' + visit + ',departure:' + outDate + 'TANYT&leg2=from:' 
+link += visit + ',to:' + home + ',departure:' + inDate + 'TANYT&passengers=children:0,adults:'
+link += "1" + ',seniors:0,infantinlap:Y&mode=search'
 
-print legIds
 print minPrice
-            
-payload = {'departureDate':datetime.date(2016,11,5).isoformat(), 
-        'departureAirport':'DFW', 'arrivalAirport':'ATL', 
-        'numberOfAdultTravelers':'1', 'maxOfferCount':'2000'}
-
-r = requests.get(url, params=payload, headers=headers)
-data = json.loads(r.text)
-
-retMinPrice = 100000
-retLegIds = ''
-
-for offer in data['offers']:
-    price = float(offer['totalPrice']['amount']) 
-    if price < retMinPrice:
-        retMinPrice = price
-        retLegIds = offer['legIds']
-
-print retLegIds
-print retMinPrice
-"""
+print flightInfo
+print link
