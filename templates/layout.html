@@ -9,10 +9,59 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
 	<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3CX-dPmHJfqa3UJGTeONprR_onwEnN0M&callback=initMap"
-			type="text/javascript"></script>
-
+	<script src="{{url_for('static', filename='main.js')}}"></script>
 		<title>Fly Away With Me</title>
+	<style>
+		html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		}
+		#map {
+		height: 100%;
+		}
+		.controls {
+		margin-top: 10px;
+		border: 1px solid transparent;
+		border-radius: 2px 0 0 2px;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		height: 32px;
+		outline: none;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+		}
+
+		#pac-input {
+		background-color: #fff;
+		font-family: Roboto;
+		font-size: 15px;
+		font-weight: 300;
+		margin-left: 12px;
+		padding: 0 11px 0 13px;
+		text-overflow: ellipsis;
+		width: 300px;
+		}
+
+		#pac-input:focus {
+		border-color: #4d90fe;
+		}
+
+		.pac-container {
+		font-family: Roboto;
+		}
+
+		#type-selector {
+		color: #fff;
+		background-color: #4d90fe;
+		padding: 5px 11px 0px 11px;
+		}
+
+		#type-selector label {
+		font-family: Roboto;
+		font-size: 13px;
+		font-weight: 300;
+		}
+	</style>
 </head>
 	<body>
 		<div class="container-fluid">
@@ -24,17 +73,51 @@
 					<div class="right-box">
 						<div class="field">
 							<h3>Where are you coming from?</h3>
-							<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+		<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+		<div id="map"></div>
+	<script>
 
-						</div>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+        });
+        var input = /** @type {!HTMLInputElement} */(
+            document.getElementById('pac-input'));
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+
+        autocomplete.addListener('place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          var place = autocomplete.getPlace();
+
+          // If the place has a geometry, then present it on a map.
+
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.open(map, marker);
+        });
+
+        // Sets a listener on a radio button to change the filter type on Places
+        // Autocomplete.
+        function setupClickListener(id, types) {
+          var radioButton = document.getElementById(id);
+          radioButton.addEventListener('click', function() {
+            autocomplete.setTypes(types);
+          });
+        }
+      }
+    </script>
+							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4bY7ArWix6j9i-oD1kNZtrgx-nvbBja4&libraries=places&callback=initMap"
+									async defer></script>
 						<div class="field">
 							<h3>Round trip?</h3>
 							<select>
 								<option>Yes</option>
 								<option>No</option>
 							</select>
+
 						</div>
-						<div class="field">
 							<button><h4>GO</h4></button>
 						</div>
 				    </div>
