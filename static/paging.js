@@ -11,14 +11,12 @@ function scrollToEntry(forward) {
 	currentListIndex = forward ? currentListIndex + 1 : currentListIndex - 1
 
 	var info = offers[currentListIndex];
-	var originalDeparture = info["outDate"];
-	var originalReturn = info["inDate"];
 	var nextEntry = {
 		"cost" : Number(info["minPrice"]).toFixed(2),
 		"origin" : info["home"],
 		"destination" : info["visit"],
-		"departureTime" : formatDate(originalDeparture),
-		"returnTime" : formatDate(originalReturn)
+		"departureTime" : info["outDate"],
+		"returnTime" : info["inDate"]
 	};
 
 	var isFirstAnimation = document.getElementById('roundTripInfo');
@@ -34,8 +32,8 @@ function scrollToEntry(forward) {
 					'<h1>$' + nextEntry["cost"] + '</h1><br>' +
 					'<h3>' +
 						'<div class="col-sm-5 right-align">To</div><div class="col-sm-7 left-align">' + nextEntry["destination"] + '</div><br>' +
-						'<div class="col-sm-5 right-align">Departing</div><div class="col-sm-7 left-align">' + nextEntry["departureTime"] + '</div><br>' +
-						(isRoundTrip ? '<div class="col-sm-5 right-align">Returning</div><div class="col-sm-7 left-align">' + nextEntry["returnTime"] + '</div><br>' : '') +
+						'<div class="col-sm-5 right-align">Departing</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["departureTime"]) + '</div><br>' +
+						(isRoundTrip ? '<div class="col-sm-5 right-align">Returning</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["returnTime"]) + '</div><br>' : '') +
 						//'<div class="col-sm-5 right-align">Airline</div><div class="col-sm-7 left-align">' + nextEntry["airline"] + '</div><br>' +
 						'<div class="col-sm-5 right-align">Type</div><div class="col-sm-7 left-align">' + (isRoundTrip ? 'Round trip' : 'Single flight') + '</div><br>' +
 					'</h3>' +
@@ -52,16 +50,23 @@ function scrollToEntry(forward) {
 				'<h1>$' + nextEntry["cost"] + '</h1><br>' +
 				'<h3>' +
 					'<div class="col-sm-5 right-align">To</div><div class="col-sm-7 left-align">' + nextEntry["destination"] + '</div><br>' +
-					'<div class="col-sm-5 right-align">Departing</div><div class="col-sm-7 left-align">' + nextEntry["departureTime"] + '</div><br>' +
-					(isRoundTrip ? '<div class="col-sm-5 right-align">Returning</div><div class="col-sm-7 left-align">' + nextEntry["returnTime"] + '</div><br>' : '') +
+					'<div class="col-sm-5 right-align">Departing</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["departureTime"]) + '</div><br>' +
+					(isRoundTrip ? '<div class="col-sm-5 right-align">Returning</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["returnTime"]) + '</div><br>' : '') +
 					//'<div class="col-sm-5 right-align">Airline</div><div class="col-sm-7 left-align">' + nextEntry["airline"] + '</div><br>' +
 					'<div class="col-sm-5 right-align">Type</div><div class="col-sm-7 left-align">' + (isRoundTrip ? 'Round trip' : 'Single flight') + '</div><br>' +
 				'</h3>' +
 			'</div>').prependTo(".right-box");
 		}
+		$('.bookButton').click(function() {
+			location.href = constructURL(nextEntry);
+		});
 	    checkButtons();
 	});
-	// checkButtons();
+}
+
+function constructURL(offerInfo) {
+	//https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:ATL,to:SFO,departure:09/30/2016TANYT&leg2=from:SFO,to:ATL,departure:10/01/2016TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y&mode=search
+	return 'https://www.expedia.com/Flights-Search?trip=' + (isRoundTrip ? 'roundtrip' : 'oneway') + '&leg1=from:' + offerInfo['origin'] + ',to:' + offerInfo['destination'] + ',departure:' + formatDateShort(offerInfo['departureTime']) + 'TANYT&leg2=from:' + offerInfo['destination'] + ',to:' + offerInfo['origin'] + ',departure:' + formatDateShort(offerInfo['returnTime']) + 'TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y&mode=search';
 }
 
 function checkButtons() {
@@ -77,7 +82,7 @@ function checkButtons() {
 	}
 }
 
-function formatDate(date) {
+function formatDateLong(date) {
 	if (date) {
 		var d = new Date(date);
 		var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -86,4 +91,9 @@ function formatDate(date) {
 	} else {
 		return undefined;
 	}
+}
+
+function formatDateShort(date) {
+	var d = new Date(date);
+	return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
 }
