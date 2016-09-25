@@ -44,14 +44,8 @@ def getFlightInfo(depAirPort):
         r = requests.post(url, data=json.dumps(payload), headers=header)
         data = json.loads(r.text)
 
-        offers = data['FareCalendar']['AirOfferSummary']
-        orderedOffers = [];
-        for offer in offers:
-            price = float(offer['FlightPriceSummary']['TotalPrice'])
-            #if price < minPrice:
-             #  flightInfo = offer['FlightItinerarySummary']
-             #  stuff = offer
-             #  minPrice = price
+        orderedOffers = data['FareCalendar']['AirOfferSummary']
+        
     orderedOffers.sort(comparator)
     formattedOrderedOffers = [];
 

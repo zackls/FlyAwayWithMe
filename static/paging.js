@@ -14,7 +14,7 @@ function scrollToEntry(forward) {
 
 	var info = offers[currentListIndex];
 	var nextEntry = {
-		"cost" : Number(info["minPrice"]).toFixed(2),
+		"cost" : (new Number(info["minPrice"])).toFixed(2),
 		"origin" : info["home"],
 		"destination" : info["visit"],
 		"departureTime" : info["outDate"],
