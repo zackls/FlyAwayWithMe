@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    #orderedOffers = getFlightInfo('ATL')
+    orderedOffers = getFlightInfo('ATL')
     return render_template('layout.html', orderedOffers=orderedOffers)
 
 @app.route('/', methods=['POST'])
