@@ -36,7 +36,7 @@ def getFlightInfo(depAirPort):
                 'OriginAirportCodeList': 
                 {'AirportCode': [depAirPort]},
                 'DestinationAirportCodeList': 
-                {'AirportCode': ['SFO']},
+                {'AirportCode': ['ATL','ORD','LAX','DFW','DEN','JFK','SFO','LAS','PHX','IAH','CLT','MIA','MCO','EWR','SEA','MSP','DTW','PHL','BOS','LGA','FLL','BWI','IAD','SLC','MDW','DCA','HNL','SAN','TPA','PDX','STL','MCI','HOU','BNA','MKE','OAK','RDU','AUS','CLE','SMF','MEM','MSY','SNA','SJC','PIT','SAT','DAL','RSW','IND','CVG']},
                 'FareCalendar': {
                     "StartDate" : date.isoformat(),
                     "DayCount" : 30 }
@@ -45,7 +45,7 @@ def getFlightInfo(depAirPort):
         data = json.loads(r.text)
 
         orderedOffers = data['FareCalendar']['AirOfferSummary']
-        
+
     orderedOffers.sort(comparator)
     formattedOrderedOffers = [];
 
