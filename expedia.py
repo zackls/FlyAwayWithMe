@@ -45,42 +45,38 @@ def getFlightInfo(depAirPort):
         data = json.loads(r.text)
 
         offers = data['FareCalendar']['AirOfferSummary']
-        orderedPrices = [];
+        orderedOffers = [];
         for offer in offers:
-            price = float(offer['FlightPriceSummary']['TotalPrice'])
-            orderedPrices.append(offer);
-            #if price < minPrice:
-             #  flightInfo = offer['FlightItinerarySummary']
-             #  stuff = offer
-             #  minPrice = price
-        orderedPrices.sort(comparator)
-
-    home = flightInfo['OutboundDepartureAirportCode']
-    visit = flightInfo['InboundDepartureAirportCode']
-    outDate = flightInfo['OutboundDepartureTime']
-    inDate = flightInfo['InboundDepartureTime']
-    outAirLine = flightInfo['OutboundDepartureAirlineCode']
-    inAirLine = flightInfo['InboundDepartureAirlineCode']
-
-    flightInfo = {'home':home,'visit':visit,'outDate':outDate,'inDate':inDate,
-            'minPrice':minPrice,'outAirLine':outAirLine,'inAirLine':inAirLine}
-
-    outDate = outDate.split('T')[0]
-    outDate = outDate.split("-")[1] + "/" + outDate.split("-")[2] + "/" +  outDate.split("-")[0]
-    inDate = inDate.split('T')[0]
-    inDate = inDate.split("-")[1] + "/" + inDate.split("-")[2] + "/" +  inDate.split("-")[0]
-
-    #Make link that doesn't show the flight....
-    link = 'https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:'
-    link += home + ',to:' + visit + ',departure:' + outDate + 'TANYT&leg2=from:' 
-    link += visit + ',to:' + home + ',departure:' + inDate + 'TANYT&passengers=children:0,adults:'
-    link += '1,seniors:0,infantinlap:Y&mode=search'
-
-    #print minPrice
-    #print flightInfo
-    #print link
-    return orderedPrices
+            orderedOffers.append(offer);
 
 
-if __name__ == '__main__':
-   getFlightInfo('ATL')
+    orderedOffers.sort(comparator)
+    foramttedOrderedOffers = [];
+
+    for offer in orderedOffers:
+        home = offer['FlightItinerarySummary']['OutboundDepartureAirportCode']
+        visit = offer['FlightItinerarySummary']['InboundDepartureAirportCode']
+        outDate = offer['FlightItinerarySummary']['OutboundDepartureTime']
+        inDate = offer['FlightItinerarySummary']['InboundDepartureTime']
+        outAirLine = offer['FlightItinerarySummary']['OutboundDepartureAirlineCode']
+        inAirLine = offer['FlightItinerarySummary']['InboundDepartureAirlineCode']
+        price = offer['FlightPriceSummary']['TotalPrice']
+
+        flightInfo = {'home':home,'visit':visit,'outDate':outDate,'inDate':inDate,
+                'minPrice':price,'outAirLine':outAirLine,'inAirLine':inAirLine}
+
+        foramttedOrderedOffers.append(flightInfo)
+
+        outDate = outDate.split('T')[0]
+        outDate = outDate.split("-")[1] + "/" + outDate.split("-")[2] + "/" +  outDate.split("-")[0]
+        inDate = inDate.split('T')[0]
+        inDate = inDate.split("-")[1] + "/" + inDate.split("-")[2] + "/" +  inDate.split("-")[0]
+
+        #Make link that doesn't show the flight....
+        link = 'https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:'
+        link += home + ',to:' + visit + ',departure:' + outDate + 'TANYT&leg2=from:' 
+        link += visit + ',to:' + home + ',departure:' + inDate + 'TANYT&passengers=children:0,adults:'
+        link += '1,seniors:0,infantinlap:Y&mode=search'
+
+
+    return foramttedOrderedOffers

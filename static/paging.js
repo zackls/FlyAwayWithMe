@@ -1,21 +1,17 @@
 var isRoundTrip = true;
 
-var flightArray;
-var currentListIndex;
+var currentListIndex = 0;
 
 function scrollToNextEntry() {
-	if (!flightArray) {
-		flightArray = document.getElementById("flightInfoContainer").getAttribute("data-flightArray");
-		currentListIndex = 0;
-	}
+	console.log(offers);
 
-	var info = flightArray[currentListIndex];
-	var originalDeparture = info.getAttribute("data-departureTime");
-	var originalReturn = info.getAttribute("data-returnTime");
+	var info = offers[currentListIndex];
+	var originalDeparture = info["outDate"];
+	var originalReturn = info["inDate"];
 	var nextEntry = {
-		"cost" : Number(info.getAttribute("data-cost")).toFixed(2),
-		"origin" : info.getAttribute("data-origin"),
-		"destination" : info.getAttribute("data-destination"),
+		"cost" : Number(info["minPrice"]).toFixed(2),
+		"origin" : info["home"],
+		"destination" : info["visit"],
 		"departureTime" : formatDate(originalDeparture),
 		"returnTime" : formatDate(originalReturn)
 	};

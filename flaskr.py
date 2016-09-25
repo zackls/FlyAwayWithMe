@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    orderedPrices = getFlightInfo('ATL')
-    return render_template('layout.html',orderedPrices=orderedPrices)
+    orderedOffers = getFlightInfo('ATL')
+    return render_template('layout.html', orderedOffers=orderedOffers)
 
 if __name__ == '__main__':
-        app.run()
+    app.run()
