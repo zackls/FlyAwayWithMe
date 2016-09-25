@@ -49,7 +49,7 @@ def getFlightInfo(depAirPort):
         for offer in offers:
             price = float(offer['FlightPriceSummary']['TotalPrice'])
             orderedPrices.append(offer);
-            #if price < minPrice:
+            if price < minPrice:
              #  flightInfo = offer['FlightItinerarySummary']
              #  stuff = offer
              #  minPrice = price
@@ -82,5 +82,5 @@ def getFlightInfo(depAirPort):
     return orderedPrices
 
 
-if __name__ == '__main__':
-   getFlightInfo('ATL')
+#if __name__ == '__main__':
+ #  getFlightInfo('ATL')

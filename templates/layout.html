@@ -10,6 +10,7 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='paging.js')}}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='main.js')}}"></script>
 		<script src="http://www.w3schools.com/lib/w3data.js"></script>
 
 		<title>Fly Away With Me</title>
@@ -45,40 +46,9 @@
 				<div class="col-sm-6 right vertical-align info-container">
 					<div class="right-box original-query">
 						<div class="field">
-							<h3>Where are you coming from?</h3>
-							<datalist id="airports">
-								<option value="Aberdeen, SD (ABR)">
-								<option value = "Abilene, TX (ABI)">
-								<option value="Adak Island, AK (ADK)">
-								<option value="Akiachak, AK (KKI)">
-								<option value="Akiak, AK (AKI)">
-								<option value="Akron/Canton, OH (CAK)">
-								<option value="Akuton, AK (KQA)">
-								<option value="Alakanuk, AK (AUK)">
-								<option value="Alamogordo, NM (ALM)">
-								<option value="Alamosa, CO (ALS)">
-								<option value="Albany, NY (ALB)">
-								<option value="Albuquerque, NM (ABQ)" >
-								<option value="Alexandria, LA (AEX)">
-								<option value="Allakaket, AK (AET)">
-								<option value="Allentown, PA (ABE)">
-								<option value="Alliance, NE (AIA">
-								<option value="Alpena, MI (APN)">
-								<option value="Altoona, PA (AOO)">
-								<option value="Amarillo, TX (AMA)">
-								<option value="Ambler, AK (ABL)">
-								<option value="Anaktueuk, AK (AKP)">
-								<option value="Anchorage, AK (ANC)">
-								<option value="Angoon, AK (AGN)">
-								<option value="Aniak, AK (ANI)">
-								<option value="Anvik, AK (ANV)">
-								<option value="Appleton, WI (ATW)">
-								<option value="Arcata, CA (ACV)">
-								<option value="Arctic Village, AK (ARC)">
-								<option value="Asheville, NC (AVL)">
-								<option value="Ashland, KY/Huntington, WV (HTS)">
-							</datalist>
-							<input type="text" list = "airports">
+							<h3>Where is your starting point?</h3>
+							<input type="text" id = "ajax" list = "airports">
+							<datalist id="airports"></datalist>
 							<!--<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
 							<div id="map"></div>
 								<script>

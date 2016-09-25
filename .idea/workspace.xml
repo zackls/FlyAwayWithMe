@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22d08b09-b557-4e05-abaa-28134a8a3a56" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/planeIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/airport-codes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/input-airports.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/expedia.py" afterPath="$PROJECT_DIR$/expedia.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flaskr.py" afterPath="$PROJECT_DIR$/flaskr.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/layout.html" afterPath="$PROJECT_DIR$/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/paging.js" afterPath="$PROJECT_DIR$/static/paging.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/styles/style.css" afterPath="$PROJECT_DIR$/static/styles/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/main.js" afterPath="$PROJECT_DIR$/static/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FlyAwayWithMe.iws" />
@@ -30,10 +27,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="flaskr.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="flaskr.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37106445">
+            <state vertical-scroll-proportion="-7.983871">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
@@ -43,8 +40,8 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.567307">
-              <caret line="78" column="62" selection-start-line="78" selection-start-column="62" selection-end-line="78" selection-end-column="62" />
+            <state vertical-scroll-proportion="6.9326925">
+              <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -53,8 +50,8 @@
       <file leaf-file-name="airport-codes.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/airport-codes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.142857">
-              <caret line="32" column="45" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="45" />
+            <state vertical-scroll-proportion="-8.642858">
+              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -74,19 +71,20 @@
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="430" column="29" selection-start-line="430" selection-start-column="29" selection-end-line="430" selection-end-column="29" />
+              <caret line="403" column="29" selection-start-line="403" selection-start-column="29" selection-end-line="403" selection-end-column="29" />
               <folding>
-                <marker date="1474762342140" expanded="true" signature="38531:38604" placeholder="..." />
+                <marker date="1474768004477" expanded="true" signature="37550:37592" placeholder="..." />
+                <marker date="1474768004477" expanded="true" signature="37550:37623" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="expedia.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="expedia.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/expedia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.790323">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.2616192">
+              <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -106,7 +104,17 @@
         <entry file="file://$PROJECT_DIR$/static/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input-airports.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/input-airports.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-27.52381">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -130,12 +138,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/main.js" />
         <option value="$PROJECT_DIR$/static/styles/style.css" />
         <option value="$PROJECT_DIR$/templates/airport-codes.html" />
+        <option value="$PROJECT_DIR$/flaskr.py" />
+        <option value="$PROJECT_DIR$/static/main.js" />
+        <option value="$PROJECT_DIR$/static/input-airports.json" />
         <option value="$PROJECT_DIR$/templates/layout.html" />
         <option value="$PROJECT_DIR$/expedia.py" />
-        <option value="$PROJECT_DIR$/flaskr.py" />
       </list>
     </option>
   </component>
@@ -262,42 +271,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FlyAwayWithMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FlyAwayWithMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FlyAwayWithMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FlyAwayWithMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="bower_components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -323,7 +296,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/flaskr" />
+    <property name="last_opened_file_path" value="$USER_HOME$/speakEz" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
@@ -610,9 +583,10 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="430" column="29" selection-start-line="430" selection-start-column="29" selection-end-line="430" selection-end-column="29" />
+          <caret line="403" column="29" selection-start-line="403" selection-start-column="29" selection-end-line="403" selection-end-column="29" />
           <folding>
-            <marker date="1474762342140" expanded="true" signature="38531:38604" placeholder="..." />
+            <marker date="1474768004477" expanded="true" signature="37550:37592" placeholder="..." />
+            <marker date="1474768004477" expanded="true" signature="37550:37623" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -628,15 +602,15 @@
     <entry file="file://$PROJECT_DIR$/static/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/airport-codes.html">
+    <entry file="file://$PROJECT_DIR$/static/input-airports.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.142857">
-          <caret line="32" column="45" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="45" />
+        <state vertical-scroll-proportion="-27.52381">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -649,26 +623,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/expedia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.790323">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.567307">
-          <caret line="78" column="62" selection-start-line="78" selection-start-column="62" selection-end-line="78" selection-end-column="62" />
+        <state vertical-scroll-proportion="6.9326925">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flaskr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37106445">
+        <state vertical-scroll-proportion="-7.983871">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/airport-codes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.642858">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expedia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2616192">
+          <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
           <folding />
         </state>
       </provider>
