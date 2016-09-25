@@ -33,8 +33,12 @@ button {
 	background-color: #00695c;
     border: none;
     color: #FFF;
-    padding: 4px 36px;
+    padding: 2px 18px;
     text-decoration: none;
+}
+
+button:disabled {
+	background-color: #80cbc4;
 }
 
 input, select {
