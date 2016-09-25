@@ -93,7 +93,8 @@ function formatDateLong(date) {
 		var d = new Date(date);
 		var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-		return days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + ", " + d.getHours() + ":" + d.getMinutes() + (d.getHours() < 12 ? "AM" : "PM");
+		var mins = d.getMinutes();
+		return days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + ", " + d.getHours() + ":" + (mins < 10 ? "0" + mins : mins) + (d.getHours() < 12 ? "AM" : "PM");
 	} else {
 		return undefined;
 	}

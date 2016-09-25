@@ -1,4 +1,5 @@
 import datetime
+from dateutil import parser
 import requests
 import json
 import heapq
@@ -46,10 +47,16 @@ def getFlightInfo(depAirPort):
 
         orderedOffers = data['FareCalendar']['AirOfferSummary']
 
-    orderedOffers.sort(comparator)
-    formattedOrderedOffers = [];
-
+    offersWithRemovedSameDates = []
     for offer in orderedOffers:
+        if parser.parse(offer['FlightItinerarySummary']['OutboundDepartureTime']).date() != parser.parse(offer['FlightItinerarySummary']['InboundDepartureTime']).date():
+            offersWithRemovedSameDates.append(offer);
+
+    offersWithRemovedSameDates.sort(comparator)
+
+    formattedOrderedOffers = []
+
+    for offer in offersWithRemovedSameDates:
         home = offer['FlightItinerarySummary']['OutboundDepartureAirportCode']
         visit = offer['FlightItinerarySummary']['InboundDepartureAirportCode']
         outDate = offer['FlightItinerarySummary']['OutboundDepartureTime']
