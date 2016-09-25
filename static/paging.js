@@ -8,6 +8,8 @@ function scrollToEntry(forward) {
 		offers = JSON.parse((new String(document.getElementById("flightInfoContainer").getAttribute("data-orderedOffers"))).replace(/: u/g, ': ').replace(/\'/g, '"'));
 	}
 
+	console.log(offers);
+
 	currentListIndex = forward ? currentListIndex + 1 : currentListIndex - 1
 
 	var info = offers[currentListIndex];
@@ -16,7 +18,9 @@ function scrollToEntry(forward) {
 		"origin" : info["home"],
 		"destination" : info["visit"],
 		"departureTime" : info["outDate"],
-		"returnTime" : info["inDate"]
+		"departureLine" : info["outAirLine"],
+		"returnTime" : info["inDate"],
+		"returnLine" : info["inAirLine"]
 	};
 
 	var isFirstAnimation = document.getElementById('roundTripInfo');
@@ -32,9 +36,10 @@ function scrollToEntry(forward) {
 					'<h1>$' + nextEntry["cost"] + '</h1><br>' +
 					'<h3>' +
 						'<div class="col-sm-5 right-align">To</div><div class="col-sm-7 left-align">' + nextEntry["destination"] + '</div><br>' +
-						'<div class="col-sm-5 right-align">Departing</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["departureTime"]) + '</div><br>' +
-						(isRoundTrip ? '<div class="col-sm-5 right-align">Returning</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["returnTime"]) + '</div><br>' : '') +
-						//'<div class="col-sm-5 right-align">Airline</div><div class="col-sm-7 left-align">' + nextEntry["airline"] + '</div><br>' +
+						'<div class="col-sm-5 right-align">Departure Time</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["departureTime"]) + '</div><br>' +
+						'<div class="col-sm-5 right-align">Departure Airline</div><div class="col-sm-7 left-align">' + airlineNameForCode(nextEntry["departureLine"]) + '</div><br>' +
+						(isRoundTrip ? '<div class="col-sm-5 right-align">Return Time</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["returnTime"]) + '</div><br>' : '') +
+						(isRoundTrip ? '<div class="col-sm-5 right-align">Return Airline</div><div class="col-sm-7 left-align">' + airlineNameForCode(nextEntry["returnLine"]) + '</div><br>' : '') +
 						'<div class="col-sm-5 right-align">Type</div><div class="col-sm-7 left-align">' + (isRoundTrip ? 'Round trip' : 'Single flight') + '</div><br>' +
 					'</h3>' +
 				'</div>' +
@@ -50,15 +55,16 @@ function scrollToEntry(forward) {
 				'<h1>$' + nextEntry["cost"] + '</h1><br>' +
 				'<h3>' +
 					'<div class="col-sm-5 right-align">To</div><div class="col-sm-7 left-align">' + nextEntry["destination"] + '</div><br>' +
-					'<div class="col-sm-5 right-align">Departing</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["departureTime"]) + '</div><br>' +
-					(isRoundTrip ? '<div class="col-sm-5 right-align">Returning</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["returnTime"]) + '</div><br>' : '') +
-					//'<div class="col-sm-5 right-align">Airline</div><div class="col-sm-7 left-align">' + nextEntry["airline"] + '</div><br>' +
+					'<div class="col-sm-5 right-align">Departure Time</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["departureTime"]) + '</div><br>' +
+					'<div class="col-sm-5 right-align">Departure Airline</div><div class="col-sm-7 left-align">' + airlineNameForCode(nextEntry["departureLine"]) + '</div><br>' +
+					(isRoundTrip ? '<div class="col-sm-5 right-align">Return Time</div><div class="col-sm-7 left-align">' + formatDateLong(nextEntry["returnTime"]) + '</div><br>' : '') +
+					(isRoundTrip ? '<div class="col-sm-5 right-align">Return Airline</div><div class="col-sm-7 left-align">' + airlineNameForCode(nextEntry["returnLine"]) + '</div><br>' : '') +
 					'<div class="col-sm-5 right-align">Type</div><div class="col-sm-7 left-align">' + (isRoundTrip ? 'Round trip' : 'Single flight') + '</div><br>' +
 				'</h3>' +
 			'</div>').prependTo(".right-box");
 		}
 		$('.bookButton').click(function() {
-			location.href = constructURL(nextEntry);
+			window.open(constructURL(nextEntry));
 		});
 	    checkButtons();
 	});
@@ -96,4 +102,109 @@ function formatDateLong(date) {
 function formatDateShort(date) {
 	var d = new Date(date);
 	return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+}
+
+function airlineNameForCode(code) {
+	var airlines = {
+		'6A' : 'AVIACSA',
+		'9K' : 'Cape Air',
+		'A0' : 'L\'Avion',
+		'A7' : 'Air Plus Comet',
+		'AA' : 'American',
+		'AC' : 'Air Canada',
+		'AF' : 'Air France',
+		'AI' : 'Air India',
+		'AM' : 'Aeromexico',
+		'AR' : 'Aerolineas Argentinas',
+		'AS' : 'Alaska',
+		'AT' : 'Royal Air Maroc',
+		'AV' : 'Avianca',
+		'AY' : 'Finnair',
+		'AZ' : 'Alitalia',
+		'B6' : 'JetBlue',
+		'BA' : 'British Airways',
+		'BD' : 'bmi british midland',
+		'BR' : 'EVA Airways',
+		'C6' : 'CanJet Airlines',
+		'CA' : 'Air China',
+		'CI' : 'China',
+		'CO' : 'Continental',
+		'CX' : 'Cathay',
+		'CZ' : 'China Southern',
+		'DL' : 'Delta',
+		'EI' : 'Aer Lingus',
+		'EK' : 'Emirates',
+		'EO' : 'EOS',
+		'F9' : 'Frontier',
+		'FI' : 'Icelandair',
+		'FJ' : 'Air Pacific',
+		'FL' : 'AirTran',
+		'G4' : 'Allegiant',
+		'GQ' : 'Big Sky',
+		'HA' : 'Hawaiian',
+		'HP' : 'America West',
+		'HQ' : 'Harmony',
+		'IB' : 'Iberia',
+		'JK' : 'Spanair',
+		'JL' : 'JAL',
+		'JM' : 'Air Jamaica',
+		'KE' : 'Korean',
+		'KU' : 'Kuwait',
+		'KX' : 'Cayman',
+		'LA' : 'LanChile',
+		'LH' : 'Lufthansa',
+		'LO' : 'LOT',
+		'LT' : 'LTU',
+		'LW' : 'Pacific Wings',
+		'LX' : 'SWISS',
+		'LY' : 'El Al',
+		'MA' : 'MALEV',
+		'MH' : 'Malaysia',
+		'MU' : 'China Eastern',
+		'MX' : 'Mexicana',
+		'NH' : 'ANA',
+		'NK' : 'Spirit',
+		'NW' : 'Northwest',
+		'NZ' : 'Air New Zealand',
+		'OS' : 'Austrian',
+		'OZ' : 'Asiana',
+		'PN' : 'Pan American',
+		'PR' : 'Philippine',
+		'QF' : 'Qantas',
+		'QK' : 'Air Canada Jazz',
+		'RG' : 'VARIG',
+		'SA' : 'South African',
+		'SK' : 'SAS',
+		'SN' : 'SN Brussels',
+		'SQ' : 'Singapore',
+		'SU' : 'Aeroflot',
+		'SY' : 'Sun Country',
+		'TA' : 'Taca',
+		'TG' : 'Thai',
+		'TK' : 'Turkish',
+		'TN' : 'Air Tahiti Nui',
+		'TP' : 'TAP',
+		'TS' : 'Air Transat',
+		'U5' : 'USA 3000',
+		'UA' : 'United',
+		'UP' : 'Bahamasair',
+		'US' : 'US Air',
+		'V3' : 'Copa',
+		'VS' : 'Virgin Atlantic',
+		'VX' : 'Virgin America',
+		'WA' : 'Western',
+		'WN' : 'Southwest',
+		'WS' : 'WestJet',
+		'XE' : 'ExpressJet',
+		'Y2' : 'Globespan',
+		'Y7' : 'Silverjet',
+		'YV' : 'Mesa',
+		'YX' : 'Midwest',
+		'ZK' : 'Great Lakes'
+	};
+	if (airlines[code]) {
+		return airlines[code];
+	} else {
+		return 'Unknown';
+	}
 }
