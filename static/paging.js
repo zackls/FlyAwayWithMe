@@ -1,15 +1,21 @@
 var isRoundTrip = true;
 
-function scrollToNextEntry() {
-	getFlight();
+var flightArray;
+var currentListIndex;
 
-	var infoContainer = document.getElementById("flightInfoContainer");
-	var originalDeparture = infoContainer.getAttribute("data-departureTime");
-	var originalReturn = infoContainer.getAttribute("data-returnTime");
+function scrollToNextEntry() {
+	if (!flightArray) {
+		flightArray = document.getElementById("flightInfoContainer").getAttribute("data-flightArray");
+		currentListIndex = 0;
+	}
+
+	var info = flightArray[currentListIndex];
+	var originalDeparture = info.getAttribute("data-departureTime");
+	var originalReturn = info.getAttribute("data-returnTime");
 	var nextEntry = {
-		"cost" : Number(infoContainer.getAttribute("data-cost")).toFixed(2),
-		"origin" : infoContainer.getAttribute("data-origin"),
-		"destination" : infoContainer.getAttribute("data-destination"),
+		"cost" : Number(info.getAttribute("data-cost")).toFixed(2),
+		"origin" : info.getAttribute("data-origin"),
+		"destination" : info.getAttribute("data-destination"),
 		"departureTime" : formatDate(originalDeparture),
 		"returnTime" : formatDate(originalReturn)
 	};
@@ -36,20 +42,6 @@ function scrollToNextEntry() {
 				'<button class="nextButton" onClick="scrollToNextEntry()"><h4>NEXT</h4></button>' +
 			'</div>' +
 	    '</div>').appendTo(".info-container");
-	});
-}
-
-function getFlight() {
-	$.ajax({
-		type: "POST",
-		url: "{{ url_for('', filename='flaskr.py')}}",
-		data: { param: "ATL"},
-		success: function(d) {
-			console.log(d);
-		},
-		error: function(e) {
-			console.log(e);
-		}
 	});
 }
 
