@@ -97,7 +97,7 @@
 							</form>
 						</div>
 						<div class="field">
-							<button class="nextButton" onClick="isRoundTrip = document.getElementById('roundTripInfo').selectedIndex == 0; scrollToNextEntry();"><h4>GO</h4></button>
+							<button class="nextButton" onClick="isRoundTrip = document.getElementById('roundTripInfo').selectedIndex == 0; scrollToEntry(true);"><h4>GO</h4></button>
 						</div>
 				    </div>
 
@@ -106,5 +106,5 @@
 		</div>
 			<script type="text/javascript" src="{{ url_for('static', filename='main.js')}}"></script>
 	</body>
-	<div id="flightInfoContainer" data-orderedOffers={{orderedOffers}}></div>
+	<div id="flightInfoContainer" data-orderedOffers='{{orderedOffers}}'></div>
 </html>
