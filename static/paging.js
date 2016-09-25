@@ -1,9 +1,13 @@
 var isRoundTrip = true;
 
-var currentListIndex = 0;
+var offers;
+var currentListIndex;
 
 function scrollToNextEntry() {
-	console.log(offers);
+	if (!offers) {
+		offers = JSON.parse((new String(document.getElementById("flightInfoContainer").getAttribute("data-orderedOffers"))).replace(/: u/g, ': ').replace(/\'/g, '"'));
+		currentListIndex = 0;
+	}
 
 	var info = offers[currentListIndex];
 	var originalDeparture = info["outDate"];
@@ -39,6 +43,8 @@ function scrollToNextEntry() {
 			'</div>' +
 	    '</div>').appendTo(".info-container");
 	});
+
+	currentListIndex++;
 }
 
 function formatDate(date) {
@@ -48,6 +54,6 @@ function formatDate(date) {
 		var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 		return days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + ", " + d.getHours() + ":" + d.getMinutes() + (d.getHours() < 12 ? "AM" : "PM");
 	} else {
-		return null;
+		return undefined;
 	}
 }
