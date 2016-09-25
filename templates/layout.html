@@ -6,12 +6,11 @@
 		<link rel="stylesheet" type="text/CSS" href="{{ url_for('static', filename='styles/style.css')}}">
 		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Lato">
 		<link rel="stylesheet" type="text/CSS" href="http://fonts.googleapis.com/css?family=Vollkorn">
-		<script src="{{url_for('static', filename='main.js')}}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='jquery-3.1.1.min.js')}}"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3CX-dPmHJfqa3UJGTeONprR_onwEnN0M&callback=initMap" type="text/javascript"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='paging.js')}}"></script>
+		<script src="http://www.w3schools.com/lib/w3data.js"></script>
 
 		<title>Fly Away With Me</title>
 	</head>
@@ -47,7 +46,40 @@
 					<div class="right-box original-query">
 						<div class="field">
 							<h3>Where are you coming from?</h3>
-							<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+							<datalist id="airports">
+								<option value="Aberdeen, SD (ABR)">
+								<option value = "Abilene, TX (ABI)">
+								<option value="Adak Island, AK (ADK)">
+								<option value="Akiachak, AK (KKI)">
+								<option value="Akiak, AK (AKI)">
+								<option value="Akron/Canton, OH (CAK)">
+								<option value="Akuton, AK (KQA)">
+								<option value="Alakanuk, AK (AUK)">
+								<option value="Alamogordo, NM (ALM)">
+								<option value="Alamosa, CO (ALS)">
+								<option value="Albany, NY (ALB)">
+								<option value="Albuquerque, NM (ABQ)" >
+								<option value="Alexandria, LA (AEX)">
+								<option value="Allakaket, AK (AET)">
+								<option value="Allentown, PA (ABE)">
+								<option value="Alliance, NE (AIA">
+								<option value="Alpena, MI (APN)">
+								<option value="Altoona, PA (AOO)">
+								<option value="Amarillo, TX (AMA)">
+								<option value="Ambler, AK (ABL)">
+								<option value="Anaktueuk, AK (AKP)">
+								<option value="Anchorage, AK (ANC)">
+								<option value="Angoon, AK (AGN)">
+								<option value="Aniak, AK (ANI)">
+								<option value="Anvik, AK (ANV)">
+								<option value="Appleton, WI (ATW)">
+								<option value="Arcata, CA (ACV)">
+								<option value="Arctic Village, AK (ARC)">
+								<option value="Asheville, NC (AVL)">
+								<option value="Ashland, KY/Huntington, WV (HTS)">
+							</datalist>
+							<input type="text" list = "airports">
+							<!--<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
 							<div id="map"></div>
 								<script>
 							      function initMap() {
@@ -55,9 +87,13 @@
 							        });
 							        var input = /** @type {!HTMLInputElement} */(
 							            document.getElementById('pac-input'));
+							            var options = {
+  											types: ['(airport)'],
+ 									};
+ 									console.log(options);
 							        var autocomplete = new google.maps.places.Autocomplete(input);
-							        autocomplete.bindTo('bounds', map);
-
+							        var result = autocomplete.getPlace();
+									console.log(result);
 							        var infowindow = new google.maps.InfoWindow();
 
 							        autocomplete.addListener('place_changed', function() {
@@ -70,7 +106,6 @@
 							          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
 							          infowindow.open(map, marker);
 							        });
-
 							        // Sets a listener on a radio button to change the filter type on Places
 							        // Autocomplete.
 							        function setupClickListener(id, types) {
@@ -79,10 +114,10 @@
 							            autocomplete.setTypes(types);
 							          });
 							        }
-							      }
-							    </script>
-							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4bY7ArWix6j9i-oD1kNZtrgx-nvbBja4&types=airport&libraries=places&callback=initMap"
-									async defer></script>
+							       }
+							    </script>-->
+<!--							<script src="https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyB4bY7ArWix6j9i-oD1kNZtrgx-nvbBja4&types=airport&callback=initMap"
+									async defer></script>-->
 						<div class="field">
 							<h3>Round trip?</h3>
 							<select id="roundTripInfo">

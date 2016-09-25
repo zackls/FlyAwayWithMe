@@ -1,7 +1,14 @@
 import datetime
 import requests
 import json
-
+import heapq
+def comparator(a, b):
+    if (float(a['FlightPriceSummary']['TotalPrice']) > float(b['FlightPriceSummary']['TotalPrice'])) :
+        return 1;
+    if (float(a['FlightPriceSummary']['TotalPrice']) < float(b['FlightPriceSummary']['TotalPrice'])):
+        return -1;
+    else:
+        return 0;
 def getFlightInfo(depAirPort):
     url = 'http://terminal2.expedia.com:80/x/flights/overview/get'
 
@@ -38,13 +45,15 @@ def getFlightInfo(depAirPort):
         data = json.loads(r.text)
 
         offers = data['FareCalendar']['AirOfferSummary']
-
+        orderedPrices = [];
         for offer in offers:
-            price = float(offer['FlightPriceSummary']['TotalPrice']) 
-            if price < minPrice:
-                flightInfo = offer['FlightItinerarySummary']
-                stuff = offer
-                minPrice = price
+            price = float(offer['FlightPriceSummary']['TotalPrice'])
+            orderedPrices.append(offer);
+            #if price < minPrice:
+             #  flightInfo = offer['FlightItinerarySummary']
+             #  stuff = offer
+             #  minPrice = price
+        orderedPrices.sort(comparator)
 
     home = flightInfo['OutboundDepartureAirportCode']
     visit = flightInfo['InboundDepartureAirportCode']
@@ -67,7 +76,11 @@ def getFlightInfo(depAirPort):
     link += visit + ',to:' + home + ',departure:' + inDate + 'TANYT&passengers=children:0,adults:'
     link += '1,seniors:0,infantinlap:Y&mode=search'
 
-    print minPrice
-    print flightInfo
-    print link
-    return flightInfo
+    #print minPrice
+    #print flightInfo
+    #print link
+    return orderedPrices
+
+
+if __name__ == '__main__':
+   getFlightInfo('ATL')
