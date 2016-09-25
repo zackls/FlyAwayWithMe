@@ -37,11 +37,14 @@ button {
     text-decoration: none;
 }
 
-input {
+input, select {
 	border: none;
 	border-bottom: 1px solid #444;
-	width: 100%;
 	text-align: center;
+}
+
+input {
+	width: 100%;
 }
 
 .right {

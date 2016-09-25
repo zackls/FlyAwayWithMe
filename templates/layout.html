@@ -10,7 +10,6 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='paging.js')}}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='main.js')}}"></script>
 		<script src="http://www.w3schools.com/lib/w3data.js"></script>
 
 		<title>Fly Away With Me</title>
@@ -47,8 +46,9 @@
 					<div class="right-box original-query">
 						<div class="field">
 							<h3>Where is your starting point?</h3>
-							<input type="text" id = "ajax" list = "airports">
+							<form action="." method="POST">
 							<datalist id="airports"></datalist>
+							<input type="text" id = "ajax" list = "airports" placeholder="Enter Starting Point" value = "Send">
 							<!--<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
 							<div id="map"></div>
 								<script>
@@ -94,15 +94,17 @@
 								<option>Yes</option>
 								<option>No</option>
 							</select>
-
+							</form>
 						</div>
 						<div class="field">
 							<button class="nextButton" onClick="isRoundTrip = document.getElementById('roundTripInfo').selectedIndex == 0; scrollToNextEntry();"><h4>GO</h4></button>
 						</div>
 				    </div>
+
 				</div>
 			</div>
 		</div>
+			<script type="text/javascript" src="{{ url_for('static', filename='main.js')}}"></script>
 	</body>
+	<div id="flightInfoContainer" data-orderedOffers={{orderedOffers}}></div>
 </html>
-<div id="flightInfoContainer" data-cost={{flightInfo.minPrice}} data-origin={{flightInfo.home}} data-destination={{flightInfo.visit}} data-departureTime={{flightInfo.outDate}} data-returnTime={{flightInfo.inDate}}>
